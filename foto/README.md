@@ -5,4 +5,3 @@ Puoi creare sottocartelle per tipo: interni/, esterni/, bagni/, cucine/, infissi
 Un nome file descrittivo aiuta (es. milano-bagno-ristrutturato.jpg).
 
 L'attività automatica le usa per la variante B al posto delle foto generate.
-Le foto già usate sono elencate in analisi/foto-usate.md.

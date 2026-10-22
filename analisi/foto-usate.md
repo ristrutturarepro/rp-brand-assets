@@ -1,2 +1,0 @@
-# Foto reali già usate
-
