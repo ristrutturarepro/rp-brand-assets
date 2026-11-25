@@ -215,7 +215,9 @@ def main():
         inputs, filters = [], []
         for i, p in enumerate(story):
             inputs += ["-loop", "1", "-t", str(secs), "-i", p]
-            filters.append(f"[{i}:v]scale=1080:1920,format=yuv420p,fade=t=in:st=0:d=0.3,fade=t=out:st={secs-0.3}:d=0.3[v{i}]")
+            # copertina: il primo fotogramma e' la slide 1 piena (niente dissolvenza dal nero)
+            fin = "" if i == 0 else "fade=t=in:st=0:d=0.3,"
+            filters.append(f"[{i}:v]scale=1080:1920,format=yuv420p,{fin}fade=t=out:st={secs-0.3}:d=0.3[v{i}]")
         concat = "".join(f"[v{i}]" for i in range(len(story))) + f"concat=n={len(story)}:v=1:a=0[out]"
         cmd = ["ffmpeg", "-y", "-loglevel", "error", *inputs,
                "-f", "lavfi", "-t", str(secs * len(story)), "-i", "anullsrc=r=44100:cl=stereo",
